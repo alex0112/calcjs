@@ -1,2 +1,0 @@
-# calcjs
-React Calculator
