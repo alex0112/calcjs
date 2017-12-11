@@ -9,7 +9,7 @@ export default class Display extends Component {
     render() {
 	return(
 	    <div id="display">
-	      <span className="number">{this.state.current_calculation}</span>
+	      <span className="number">{this.props.currentVal}</span>
 	    </div>
 	);
     }    
