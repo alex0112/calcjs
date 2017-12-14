@@ -10,7 +10,6 @@ export default class Calc extends Component {
 	super(props);
 
 	this.state = {
-	    total: 0,
 	    current_num: 0,
 	    expr: new Expr()
 	};
@@ -18,13 +17,26 @@ export default class Calc extends Component {
     }
 
     updateScreen(val) {
-	this.setState({ current_operand: val });
+	let expr = this.state.expr;
+	if (val ===~ /\+-\/\\*/) { // i.e. is it an operand?
+	    
+	}
+	else {
+	    if (this.state.expr.operand == null) {
+		expr.a = val;
+		this.setState({ current_num: expr.a });
+	    }
+	    else {
+		expr.b = val;
+		this.setState({ current_num: expr.b });
+	    }
+	}
     }
-        
+    
     render() {
 	return(
 	    <div id="calc-body">
-	      <Display currentVal={this.state.current_operand} />
+	      <Display currentNum={this.state.current_num} />
 	      <ButtonGrid updateScreen={this.updateScreen} />
 	    </div>
 	);
