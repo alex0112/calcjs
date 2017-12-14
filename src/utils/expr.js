@@ -6,7 +6,7 @@ export default class Expr {
     }
 
     static pushDigit(current_val, digit) {
-	let new_number = current_val.toString + digit.toString();
+	let new_number = current_val.toString() + digit.toString();
 	return +new_number;
     }
     
@@ -35,8 +35,6 @@ export default class Expr {
     eval() {
 	const a = this.a;
 	const b = this.b;
-
-	console.log(a, b);
 	
 	switch(this.operand) {
 	case '+':
@@ -48,7 +46,7 @@ export default class Expr {
 	case '/':
 	    return a / b;
 	default:
-	    throw "Unrecognized operand.";
+	    break;
 	}
     }
 }
