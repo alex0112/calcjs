@@ -3,38 +3,22 @@ import React, { Component } from 'react';
 import Display from './display';
 import ButtonGrid from'./button_grid';
 
-export default class Calc extends Component {
+import Expr from '../utils/expr';
 
+export default class Calc extends Component {
     constructor(props) {
 	super(props);
 
 	this.state = {
 	    total: 0,
-	    current_operand: ''
+	    current_num: 0,
+	    expr: new Expr()
 	};
-	console.log(this.state);
 	this.updateScreen = this.updateScreen.bind(this);
     }
 
-    multiply(a, b) {
-	return a * b;
-    }
-
-    divide(a, b) {
-	return a / b;
-    }
-    
-    add(a, b) {
-	return a + b;
-    }
-
-    subtract(a, b) {
-	return a - b;
-    }
-
-    updateScreen(num) {
-	console.log('this is updateScreen');
-	this.setState({ current_operand: num });
+    updateScreen(val) {
+	this.setState({ current_operand: val });
     }
         
     render() {
