@@ -4,7 +4,6 @@ import {Grid, Row, Col} from 'react-bootstrap';
 
 export default class ButtonGrid extends Component {
     render() {
-	console.log(this.props);
 	return(
 	    <Grid>
 	      <Row className="show-grid">
