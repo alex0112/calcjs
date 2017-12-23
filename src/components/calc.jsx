@@ -19,8 +19,8 @@ export default class Calc extends Component {
     updateScreen(val) {
 	
 	let expr = this.state.expr;
-	console.log("updateScreen(): ", val);
-	console.log("Before:", this.state.current_num);
+	const operand_pattern = /[+\-\/\*]{1}/;
+
 	if (val === 'C') {
 	    this.setState({
 		current_num: 0,
@@ -40,9 +40,8 @@ export default class Calc extends Component {
 	else if (val === 'u') {
 	    // do nothing.
 	}
-	
-	else if (val ===~ /\+-\/\\*/) { // i.e. is it an operand?
-	    console.log("Operand:", val);
+
+	else if (operand_pattern.test(val)) { // i.e  is it an operand?
 	    expr.operand = val;
 	    this.setState({
 		expr: expr
@@ -59,7 +58,6 @@ export default class Calc extends Component {
 		});
 	    }
 	    else {
-		console.log('setting b');
 		expr.b = val;
 		this.setState({
 		    expr: expr,
@@ -67,11 +65,9 @@ export default class Calc extends Component {
 		});
 	    }
 	}
-	console.log("After:", this.state.current_num);
     }
     
     render() {
-	console.log("foo", this.state.current_num);
 	return(
 	    <div id="calc-body">
 	      <Display currentNum={this.state.current_num} />
