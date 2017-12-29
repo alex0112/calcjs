@@ -1,13 +1,71 @@
 .App {
-  text-align: center;
+//  text-align: center;
+}
+
+
+#calc-body {
+    max-width: 200px;
+    min-width: 200px;
 }
 
 #display {
     height: 50px;
     width: 100%;
-    background: slategrey;
+    background: linear-gradient(to right, #a944423d, rgba(0,0,0,.0001))
+}
+
+#number {
+    float: right;
+    font-family: sans-serif;
+    font-weight: 100;
+    font-size: 25pt;
+}
+
+.clear-button {
+    font-size: x-large;
 }
 
 .number {
+    font-size: 18pt;
+    font-family: sans-serif;
+    font-weight: 100;
+}
+
+.btn {
+    height: 50px;
+    width: 50px;
+    border: 0px;
+    border-radius: 0px;
+}
+
+.clear-button {
     font-size: x-large;
 }
+
+.btn-special {
+    background: linear-gradient(to bottom right, orange, yellow);
+    background-clip: padding-box;
+    opacity: .77;
+}
+
+.btn-number {
+    background: linear-gradient(to bottom right, lightblue, white);
+}
+
+.btn-zero {
+    background: linear-gradient(to bottom right, lightblue, white);
+    width: 100px;
+}
+
+.container {
+    max-width: inherit;
+    min-width: inherit;
+    padding: 0;
+}
+
+.row {
+    width: 200px;
+}
+
+
+// Custom Font:
