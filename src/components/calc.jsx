@@ -17,40 +17,37 @@ export default class Calc extends Component {
     }
     
     updateScreen(val) {
-	
 	let expr = this.state.expr;
-	const operand_pattern = /[+\-\/\*]{1}/;
+	const operator_pattern = /[+\-/*]{1}/;
 
-	if (val === 'C') {
+	switch (val) {
+	case 'C':
 	    this.setState({
 		current_num: 0,
 		expr: new Expr()
 	    });
-	}
+	    break;
 
-	else if (val === '=') {
+	case '=':
 	    if (expr.a && expr.b) {
-		const result = expr.eval();
+		let result = expr.eval();
+		
 		this.setState({
-		    current_num: result,
-		});
+			current_num: result
+		    });
 	    }
-	}
-	
-	else if (val === 'u') {
-	    // do nothing.
-	}
-
-	else if (operand_pattern.test(val)) { // i.e  is it an operand?
-	    expr.operand = val;
+	    break;
+	    case (String(val).match(operator_pattern) || {}).input: // i.e. is it an operator? (https://stackoverflow.com/a/18881169)
+	    console.log('matched an operator: ', val);
+	    expr.operator = val;
 	    this.setState({
 		expr: expr
 	    });
+	    console.log('matched an operator: ', val);
+	    break;
 
-	}
-	
-	else {
-	    if (this.state.expr.operand === null) {
+	default: 
+	    if (this.state.expr.operator === null) {
 		expr.a = val;
 		this.setState({
 		    expr: expr,
@@ -64,9 +61,10 @@ export default class Calc extends Component {
 		    current_num: expr.b
 		});
 	    }
+	    break;
 	}
     }
-    
+
     render() {
 	return(
 	    <div id="calc-body">
