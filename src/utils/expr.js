@@ -1,13 +1,13 @@
 export default class Expr {
     constructor() {
-	this.operand = null;
+	this.operator = null;
 	this.a = null;
 	this.b = null;
     }
 
     static pushDigit(current_val, digit) {
 	let new_number = current_val.toString() + digit.toString();
-	return +new_number;
+	return +new_number;	
     }
     
     get a() { return this._a; }
@@ -20,7 +20,7 @@ export default class Expr {
 	    this._a = Expr.pushDigit(this.a, digit);
 	}
     }
-
+    
     get b() { return this._b; }
     
     set b(digit) {
@@ -36,7 +36,7 @@ export default class Expr {
 	const a = this.a;
 	const b = this.b;
 	
-	switch(this.operand) {
+	switch(this.operator) {
 	case '+':
 	    return a + b;
 	case '-':
