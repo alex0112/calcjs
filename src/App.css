@@ -42,7 +42,7 @@
     font-size: x-large;
 }
 
-.btn-special {
+.btn-special { /* (https://github.com/alex0112/calcjs/issues/4) */
     background: linear-gradient(to bottom right, orange, yellow);
     background-clip: padding-box;
     opacity: .77;
