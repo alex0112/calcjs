@@ -35,8 +35,8 @@ export default class Calc extends Component {
 		let result = expr.eval();
 		
 		this.setState({
-			current_num: result
-		    });
+		    current_num: result
+		});
 	    }
 	    break;
 

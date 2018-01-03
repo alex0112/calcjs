@@ -16,6 +16,9 @@ export default class Expr {
 	if (this.a == null || digit == null) {
 	    this._a = digit;
 	}
+	else if (this.a.toString().length >= 10) {
+	    return this.a;
+	}
 	else {
 	    this._a = Expr.pushDigit(this.a, digit);
 	}
@@ -27,6 +30,9 @@ export default class Expr {
 	if (this.b === null || digit === null) {
 	    this._b = digit;
 	}
+	else if (this.b.toString().length >= 10) {
+	    return this.b;
+	}
 	else {
 	    this._b = Expr.pushDigit(this.b, digit);
 	}
@@ -35,18 +41,29 @@ export default class Expr {
     eval() {
 	const a = this.a;
 	const b = this.b;
+	let result = null;
 	
 	switch(this.operator) {
 	case '+':
-	    return a + b;
+	    result =  a + b;
+	    break;
 	case '-':
-	    return a - b;
+	    result =  a - b;
+	    break;
 	case '*':
-	    return a * b;
+	    result =  a * b;
+	    break;
 	case '/':
-	    return a / b;
+	    result =  a / b;
+	    break;
 	default:
 	    break;
 	}
+
+	result.toPrecision(7);
+	if (result.toString().length > 7) {
+	    result = result.toExponential();
+        }
+	return result;
     }
 }
