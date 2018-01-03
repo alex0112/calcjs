@@ -1,19 +1,19 @@
 export default class Expr {
-    constructor() {
-	this.operator = null;
-	this.a = null;
-	this.b = null;
+    constructor(operator, a, b) {
+	this.operator = operator || null;
+	this.a = a || null;
+	this.b = b || null;
     }
 
     static pushDigit(current_val, digit) {
 	let new_number = current_val.toString() + digit.toString();
-	return +new_number;	
+	return +new_number;
     }
     
     get a() { return this._a; }
     
     set a(digit) {
-	if (this.a == null) {
+	if (this.a == null || digit == null) {
 	    this._a = digit;
 	}
 	else {
@@ -24,7 +24,7 @@ export default class Expr {
     get b() { return this._b; }
     
     set b(digit) {
-	if (this.b == null) {
+	if (this.b === null || digit === null) {
 	    this._b = digit;
 	}
 	else {

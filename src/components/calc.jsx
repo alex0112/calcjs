@@ -17,6 +17,8 @@ export default class Calc extends Component {
     }
     
     updateScreen(val) {
+	// TODO:  Abstract this function. Put the logic somewhere else.
+	// (https://github.com/alex0112/calcjs/issues/2)
 	let expr = this.state.expr;
 	const operator_pattern = /[+\-/*]{1}/;
 
@@ -37,16 +39,27 @@ export default class Calc extends Component {
 		    });
 	    }
 	    break;
-	    case (String(val).match(operator_pattern) || {}).input: // i.e. is it an operator? (https://stackoverflow.com/a/18881169)
-	    console.log('matched an operator: ', val);
+
+	case (String(val).match(operator_pattern) || {}).input: // i.e. is it an operator? (https://stackoverflow.com/a/18881169)
 	    expr.operator = val;
+	    if (expr.a && expr.b) {
+		expr = new Expr(val, this.state.current_num, null);
+	    }
+	    
 	    this.setState({
 		expr: expr
 	    });
-	    console.log('matched an operator: ', val);
 	    break;
 
+	case '%':
+	    break;
+
+	case '\u00B1':
+	    break;
+	    
 	default: 
+	    // TODO:  Give numbers their own case to avoid them being lumped in with other undefined behaviours when they happen.
+	    // (https://github.com/alex0112/calcjs/issues/1)
 	    if (this.state.expr.operator === null) {
 		expr.a = val;
 		this.setState({
