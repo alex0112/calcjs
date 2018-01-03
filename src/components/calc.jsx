@@ -55,10 +55,17 @@ export default class Calc extends Component {
 	    break;
 
 	case '\u00B1':
+	    console.log('here');
+	    console.log(this.state.current_num);
+	    let opposite = -this.state.current_num;
+	    console.log(opposite);
+	    this.setState({
+		current_num: opposite
+	    });
 	    break;
 	    
 	default: 
-	    // TODO:  Give numbers their own case to avoid them being lumped in with other undefined behaviours when they happen.
+	    // TODO: Give numbers their own case to avoid them being lumped in with other undefined behaviours when they happen.
 	    // (https://github.com/alex0112/calcjs/issues/1)
 	    if (this.state.expr.operator === null) {
 		expr.a = val;
